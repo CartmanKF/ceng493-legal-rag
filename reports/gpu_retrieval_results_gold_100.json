@@ -1,0 +1,22 @@
+{
+  "base_embedding": {
+    "model": "intfloat/multilingual-e5-base",
+    "benchmark": "gold",
+    "n": 100,
+    "recall@1": 0.62,
+    "recall@3": 0.75,
+    "recall@5": 0.83,
+    "recall@10": 0.88,
+    "mrr@10": 0.7080793650793652
+  },
+  "fine_tuned_embedding": {
+    "model": "artifacts/gpu/embedding_model",
+    "benchmark": "gold",
+    "n": 100,
+    "recall@1": 0.52,
+    "recall@3": 0.68,
+    "recall@5": 0.7,
+    "recall@10": 0.74,
+    "mrr@10": 0.6040238095238094
+  }
+}

@@ -1,0 +1,415 @@
+{
+  "benchmark": "Datasets_Ceng493_legal_rag\\gold_benchmark.json",
+  "results": {
+    "base": {
+      "n": 240,
+      "recall@1": 0.875,
+      "recall@3": 0.95,
+      "recall@5": 0.9708333333333333,
+      "mrr@5": 0.9117361111111111,
+      "answer_token_f1": 0.395116732582732,
+      "citation_hit_rate": 0.8083333333333333,
+      "grounded_answer_rate": 1.0,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m1",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m254",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m222"
+          ],
+          "answer": "Madde 225 – (1) Hüküm, ancak iddianamede unsurları gösterilen suça ilişkin fiil ve faili hakkında verilir. Madde 2 – (1) Bu Kanunun uygulanmasında\na) Şüpheli: Soruşturma evresinde, suç şüphesi altında bulunan kişiyi,\nb) Sanık: Kovuşturmanın başlamasından itibaren hükmün kesinleşmesine kadar, suç şüphesi altında bulunan kişiyi,\nc) Müdafi: Şüpheli veya sanığın ceza muhakemesinde savunmasını yapan avukatı,\nd) Vekil: Katılan, suçtan zarar gören veya malen sorumlu kişiyi ceza muhakemesinde temsil eden avukatı,\ne) Soruşturma: Kanuna göre yetkili mercilerce suç şüphesinin öğrenilmesinden iddianamenin kabulüne kadar geçen evreyi,\nf) Kovuşturma: İddianamenin kabulüyle başlayıp, hükmün kesinleşmesine kadar geçen evreyi,\ng) İfade alma: Şüphelinin kolluk görevlileri veya Cumhuriyet savcısı tarafından soruşturma konusu suçla ilgili olarak dinlenmesini,\nh) Sorgu: Şüpheli veya sanığın hâkim veya mahkeme tarafından soruşturma veya kovuşturma konusu suçla ilgili olarak dinlenmesini,\ni) Malen sorumlu: Yargılama konusu işin hükme bağlanması ve bunun kesinleşmesinden sonra, maddî ve malî sorumluluk taşıyarak hükmün sonuçlarından etkilenecek veya bunlara katlanacak kişiyi,\nj) Suçüstü:\n1. Madde 1 – (1) Bu Kanun, ceza muhakemesinin nasıl yapılacağı hususundaki kurallar ile bu sürece katılan kişilerin hak, yetki ve yükümlülüklerini düzenler.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.225 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.2 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.1 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m1"
+        },
+        {
+          "question": "Türk Medenî Kanunu m.307 kapsamında “III. Tek başına evlât edinme” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m315",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m309",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m318",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m316"
+          ],
+          "answer": "Madde 307- Evli olmayan kişi otuz yaşını doldurmuş ise tek başına evlât edinebilir. Madde 315- Evlât edinme kararı, evlât edinenin oturma yeri; birlikte evlât edinmede. Madde 309- Evlât edinme, küçüğün ana ve babasının rızasını gerektirir.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.307 - turkish_law_eski_4721_turk_medeni_kanunu_m307; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.315 - turkish_law_eski_4721_turk_medeni_kanunu_m315; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.309 - turkish_law_eski_4721_turk_medeni_kanunu_m309"
+        },
+        {
+          "question": "Bilgi Edinme Hakkı Kanunu m.17 kapsamında “Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m25",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m28"
+          ],
+          "answer": "Madde 17- Açıklanması ya da zamanından önce açıklanması hâlinde, ülkenin ekonomik çıkarlarına zarar verecek veya haksız rekabet ve kazanca sebep olacak bilgi veya belgeler, bu Kanun kapsamı dışındadır. Madde 21- Kişinin izin verdiği hâller saklı kalmak üzere, özel hayatın gizliliği kapsamında, açıklanması hâlinde kişinin sağlık bilgileri ile özel ve aile hayatına, şeref ve haysiyetine, meslekî ve ekonomik değerlerine haksız müdahale oluşturacak bilgi veya belgeler, bilgi edinme hakkı kapsamı dışındadır. Ancak, bu bilgi ve belgeler kişilerin çalışma hayatını ve meslek onurunu etkileyecek nitelikte ise, istihbarata ilişkin bilgi ve belgeler bilgi edinme hakkı kapsamı içindedir.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.17 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.21 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.18 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18"
+        },
+        {
+          "question": "Türk Bayrağı Tüzüğü m.29 kapsamında “Flandra” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m7",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m30"
+          ],
+          "answer": "Madde 29 – Flandra, boyu eninin 18 katı olan bayraktır. A) Cumhurbaşkanlığı forsu,\nB) Flandra,\nC) Sembolik bayraklar,\nD) Özel işaretli bayraklar,\n1 – Kare bayraklar,\n2 – Gidon bayraklar. Madde 1 – (Değişik: 22/2/2001 - 2001/2130 K.)\nBu Tüzük : Türk Bayrağının ve özel bayrakların standartlarını bayrağın hangi kumaşlardan yapılacağını, hangi kapalı yerlere konulacağını, nerelere fon olarak takılacağı veya asılacağını, kamu kurum ve kuruluşlarında ve bunlar dışındaki yerlerde ne zaman ve nasıl çekileceğini, nasıl katlanacağını, Türk Silahlı Kuvvetleri yüzer birliklerinde ve Türk bandıralı ticaret gemilerinde Bayrak çekme ve indirme zamanlarını, Bayrak çekilirken ve indirilirken yapılacak törenlere dair hususları, kimlerin tabutlarına Bayrak örtülebileceğini ulusal geleneklere göre Bayrağın diğer kullanılma şekli ve yerleri ile Türk Bayrağı Kanununun uygulanmasına dair diğer esasları kapsar.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.29 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.27 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.1 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1"
+        },
+        {
+          "question": "Türk Borçlar Kanunu m.314 kapsamında “2. İfa zamanı” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m193",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001",
+            "lawchatbot_turk_medeni_kanunu_medeni_hukuk_turk_borclar_kanunu_bo_0002",
+            "oricon_genel_000130"
+          ],
+          "answer": "MADDE 314- Kiracı, aksine sözleşme ve yerel âdet olmadıkça, kira bedelini ve. İfa ettiği karşı edimin faizi ile birlikte geri verilmesini. Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.314 - turkish_law_eski_6098_turk_borclar_kanunu_m314; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.193 - turkish_law_eski_6098_turk_borclar_kanunu_m193; TURKISH_LAWCHATBOT_LOW_RISK_ONLY - Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku - lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001"
+        }
+      ]
+    },
+    "adapted_retriever": {
+      "n": 240,
+      "recall@1": 0.8791666666666667,
+      "recall@3": 0.9375,
+      "recall@5": 0.975,
+      "mrr@5": 0.9113194444444445,
+      "answer_token_f1": 0.39176936449056005,
+      "citation_hit_rate": 0.7958333333333333,
+      "grounded_answer_rate": 1.0,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m254",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m275",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m1"
+          ],
+          "answer": "Madde 225 – (1) Hüküm, ancak iddianamede unsurları gösterilen suça ilişkin fiil ve faili hakkında verilir. Madde 2 – (1) Bu Kanunun uygulanmasında\na) Şüpheli: Soruşturma evresinde, suç şüphesi altında bulunan kişiyi,\nb) Sanık: Kovuşturmanın başlamasından itibaren hükmün kesinleşmesine kadar, suç şüphesi altında bulunan kişiyi,\nc) Müdafi: Şüpheli veya sanığın ceza muhakemesinde savunmasını yapan avukatı,\nd) Vekil: Katılan, suçtan zarar gören veya malen sorumlu kişiyi ceza muhakemesinde temsil eden avukatı,\ne) Soruşturma: Kanuna göre yetkili mercilerce suç şüphesinin öğrenilmesinden iddianamenin kabulüne kadar geçen evreyi,\nf) Kovuşturma: İddianamenin kabulüyle başlayıp, hükmün kesinleşmesine kadar geçen evreyi,\ng) İfade alma: Şüphelinin kolluk görevlileri veya Cumhuriyet savcısı tarafından soruşturma konusu suçla ilgili olarak dinlenmesini,\nh) Sorgu: Şüpheli veya sanığın hâkim veya mahkeme tarafından soruşturma veya kovuşturma konusu suçla ilgili olarak dinlenmesini,\ni) Malen sorumlu: Yargılama konusu işin hükme bağlanması ve bunun kesinleşmesinden sonra, maddî ve malî sorumluluk taşıyarak hükmün sonuçlarından etkilenecek veya bunlara katlanacak kişiyi,\nj) Suçüstü:\n1. Madde 254 – (Değişik: 6/12/2006-5560/25 md.)\n(1) Kamu davası açıldıktan sonra kovuşturma konusu suçun uzlaşma kapsamında olduğunun anlaşılması halinde, kovuşturma dosyası, uzlaştırma işlemlerinin 253 üncü maddede belirtilen esas ve usûle göre yerine getirilmesi için uzlaştırma bürosuna gönderilir.[99].\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.225 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.2 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.254 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m254"
+        },
+        {
+          "question": "Türk Medenî Kanunu m.307 kapsamında “III. Tek başına evlât edinme” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m315",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m309",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m318",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m316"
+          ],
+          "answer": "Madde 307- Evli olmayan kişi otuz yaşını doldurmuş ise tek başına evlât edinebilir. Madde 315- Evlât edinme kararı, evlât edinenin oturma yeri; birlikte evlât edinmede. Madde 309- Evlât edinme, küçüğün ana ve babasının rızasını gerektirir.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.307 - turkish_law_eski_4721_turk_medeni_kanunu_m307; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.315 - turkish_law_eski_4721_turk_medeni_kanunu_m315; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.309 - turkish_law_eski_4721_turk_medeni_kanunu_m309"
+        },
+        {
+          "question": "Bilgi Edinme Hakkı Kanunu m.17 kapsamında “Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m25",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m28"
+          ],
+          "answer": "Madde 17- Açıklanması ya da zamanından önce açıklanması hâlinde, ülkenin ekonomik çıkarlarına zarar verecek veya haksız rekabet ve kazanca sebep olacak bilgi veya belgeler, bu Kanun kapsamı dışındadır. Ancak, bu bilgi ve belgeler kişilerin çalışma hayatını ve meslek onurunu etkileyecek nitelikte ise, istihbarata ilişkin bilgi ve belgeler bilgi edinme hakkı kapsamı içindedir. Madde 21- Kişinin izin verdiği hâller saklı kalmak üzere, özel hayatın gizliliği kapsamında, açıklanması hâlinde kişinin sağlık bilgileri ile özel ve aile hayatına, şeref ve haysiyetine, meslekî ve ekonomik değerlerine haksız müdahale oluşturacak bilgi veya belgeler, bilgi edinme hakkı kapsamı dışındadır.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.17 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.18 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.21 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21"
+        },
+        {
+          "question": "Türk Bayrağı Tüzüğü m.29 kapsamında “Flandra” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m7",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m30"
+          ],
+          "answer": "Madde 29 – Flandra, boyu eninin 18 katı olan bayraktır. A) Cumhurbaşkanlığı forsu,\nB) Flandra,\nC) Sembolik bayraklar,\nD) Özel işaretli bayraklar,\n1 – Kare bayraklar,\n2 – Gidon bayraklar. Madde 1 – (Değişik: 22/2/2001 - 2001/2130 K.)\nBu Tüzük : Türk Bayrağının ve özel bayrakların standartlarını bayrağın hangi kumaşlardan yapılacağını, hangi kapalı yerlere konulacağını, nerelere fon olarak takılacağı veya asılacağını, kamu kurum ve kuruluşlarında ve bunlar dışındaki yerlerde ne zaman ve nasıl çekileceğini, nasıl katlanacağını, Türk Silahlı Kuvvetleri yüzer birliklerinde ve Türk bandıralı ticaret gemilerinde Bayrak çekme ve indirme zamanlarını, Bayrak çekilirken ve indirilirken yapılacak törenlere dair hususları, kimlerin tabutlarına Bayrak örtülebileceğini ulusal geleneklere göre Bayrağın diğer kullanılma şekli ve yerleri ile Türk Bayrağı Kanununun uygulanmasına dair diğer esasları kapsar.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.29 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.27 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.1 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1"
+        },
+        {
+          "question": "Türk Borçlar Kanunu m.314 kapsamında “2. İfa zamanı” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m193",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001",
+            "lawchatbot_turk_medeni_kanunu_medeni_hukuk_turk_borclar_kanunu_bo_0002",
+            "oricon_genel_000130"
+          ],
+          "answer": "MADDE 314- Kiracı, aksine sözleşme ve yerel âdet olmadıkça, kira bedelini ve. İfa ettiği karşı edimin faizi ile birlikte geri verilmesini. Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.314 - turkish_law_eski_6098_turk_borclar_kanunu_m314; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.193 - turkish_law_eski_6098_turk_borclar_kanunu_m193; TURKISH_LAWCHATBOT_LOW_RISK_ONLY - Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku - lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001"
+        }
+      ]
+    },
+    "adapted_reranker": {
+      "n": 240,
+      "recall@1": 0.8791666666666667,
+      "recall@3": 0.9541666666666667,
+      "recall@5": 0.9708333333333333,
+      "mrr@5": 0.9141666666666667,
+      "answer_token_f1": 0.3949557210891842,
+      "citation_hit_rate": 0.8125,
+      "grounded_answer_rate": 1.0,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m1",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m254",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m222"
+          ],
+          "answer": "Madde 225 – (1) Hüküm, ancak iddianamede unsurları gösterilen suça ilişkin fiil ve faili hakkında verilir. Madde 2 – (1) Bu Kanunun uygulanmasında\na) Şüpheli: Soruşturma evresinde, suç şüphesi altında bulunan kişiyi,\nb) Sanık: Kovuşturmanın başlamasından itibaren hükmün kesinleşmesine kadar, suç şüphesi altında bulunan kişiyi,\nc) Müdafi: Şüpheli veya sanığın ceza muhakemesinde savunmasını yapan avukatı,\nd) Vekil: Katılan, suçtan zarar gören veya malen sorumlu kişiyi ceza muhakemesinde temsil eden avukatı,\ne) Soruşturma: Kanuna göre yetkili mercilerce suç şüphesinin öğrenilmesinden iddianamenin kabulüne kadar geçen evreyi,\nf) Kovuşturma: İddianamenin kabulüyle başlayıp, hükmün kesinleşmesine kadar geçen evreyi,\ng) İfade alma: Şüphelinin kolluk görevlileri veya Cumhuriyet savcısı tarafından soruşturma konusu suçla ilgili olarak dinlenmesini,\nh) Sorgu: Şüpheli veya sanığın hâkim veya mahkeme tarafından soruşturma veya kovuşturma konusu suçla ilgili olarak dinlenmesini,\ni) Malen sorumlu: Yargılama konusu işin hükme bağlanması ve bunun kesinleşmesinden sonra, maddî ve malî sorumluluk taşıyarak hükmün sonuçlarından etkilenecek veya bunlara katlanacak kişiyi,\nj) Suçüstü:\n1. Madde 1 – (1) Bu Kanun, ceza muhakemesinin nasıl yapılacağı hususundaki kurallar ile bu sürece katılan kişilerin hak, yetki ve yükümlülüklerini düzenler.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.225 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.2 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.1 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m1"
+        },
+        {
+          "question": "Türk Medenî Kanunu m.307 kapsamında “III. Tek başına evlât edinme” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m315",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m309",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m318",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m316"
+          ],
+          "answer": "Madde 307- Evli olmayan kişi otuz yaşını doldurmuş ise tek başına evlât edinebilir. Madde 315- Evlât edinme kararı, evlât edinenin oturma yeri; birlikte evlât edinmede. Madde 309- Evlât edinme, küçüğün ana ve babasının rızasını gerektirir.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.307 - turkish_law_eski_4721_turk_medeni_kanunu_m307; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.315 - turkish_law_eski_4721_turk_medeni_kanunu_m315; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.309 - turkish_law_eski_4721_turk_medeni_kanunu_m309"
+        },
+        {
+          "question": "Bilgi Edinme Hakkı Kanunu m.17 kapsamında “Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m25",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m28"
+          ],
+          "answer": "Madde 17- Açıklanması ya da zamanından önce açıklanması hâlinde, ülkenin ekonomik çıkarlarına zarar verecek veya haksız rekabet ve kazanca sebep olacak bilgi veya belgeler, bu Kanun kapsamı dışındadır. Madde 21- Kişinin izin verdiği hâller saklı kalmak üzere, özel hayatın gizliliği kapsamında, açıklanması hâlinde kişinin sağlık bilgileri ile özel ve aile hayatına, şeref ve haysiyetine, meslekî ve ekonomik değerlerine haksız müdahale oluşturacak bilgi veya belgeler, bilgi edinme hakkı kapsamı dışındadır. Ancak, bu bilgi ve belgeler kişilerin çalışma hayatını ve meslek onurunu etkileyecek nitelikte ise, istihbarata ilişkin bilgi ve belgeler bilgi edinme hakkı kapsamı içindedir.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.17 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.21 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.18 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18"
+        },
+        {
+          "question": "Türk Bayrağı Tüzüğü m.29 kapsamında “Flandra” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m7",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m30"
+          ],
+          "answer": "Madde 29 – Flandra, boyu eninin 18 katı olan bayraktır. A) Cumhurbaşkanlığı forsu,\nB) Flandra,\nC) Sembolik bayraklar,\nD) Özel işaretli bayraklar,\n1 – Kare bayraklar,\n2 – Gidon bayraklar. Madde 1 – (Değişik: 22/2/2001 - 2001/2130 K.)\nBu Tüzük : Türk Bayrağının ve özel bayrakların standartlarını bayrağın hangi kumaşlardan yapılacağını, hangi kapalı yerlere konulacağını, nerelere fon olarak takılacağı veya asılacağını, kamu kurum ve kuruluşlarında ve bunlar dışındaki yerlerde ne zaman ve nasıl çekileceğini, nasıl katlanacağını, Türk Silahlı Kuvvetleri yüzer birliklerinde ve Türk bandıralı ticaret gemilerinde Bayrak çekme ve indirme zamanlarını, Bayrak çekilirken ve indirilirken yapılacak törenlere dair hususları, kimlerin tabutlarına Bayrak örtülebileceğini ulusal geleneklere göre Bayrağın diğer kullanılma şekli ve yerleri ile Türk Bayrağı Kanununun uygulanmasına dair diğer esasları kapsar.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.29 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.27 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.1 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1"
+        },
+        {
+          "question": "Türk Borçlar Kanunu m.314 kapsamında “2. İfa zamanı” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m193",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001",
+            "lawchatbot_turk_medeni_kanunu_medeni_hukuk_turk_borclar_kanunu_bo_0002",
+            "oricon_genel_000130"
+          ],
+          "answer": "MADDE 314- Kiracı, aksine sözleşme ve yerel âdet olmadıkça, kira bedelini ve. İfa ettiği karşı edimin faizi ile birlikte geri verilmesini. Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku.\n\nCitations: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.314 - turkish_law_eski_6098_turk_borclar_kanunu_m314; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.193 - turkish_law_eski_6098_turk_borclar_kanunu_m193; TURKISH_LAWCHATBOT_LOW_RISK_ONLY - Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku - lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001"
+        }
+      ]
+    },
+    "adapted_llm": {
+      "n": 240,
+      "recall@1": 0.875,
+      "recall@3": 0.95,
+      "recall@5": 0.9708333333333333,
+      "mrr@5": 0.9117361111111111,
+      "answer_token_f1": 0.40030725143338064,
+      "citation_hit_rate": 0.8083333333333333,
+      "grounded_answer_rate": 1.0,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m1",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m254",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m222"
+          ],
+          "answer": "Kaynağa göre: Madde 225 – (1) Hüküm, ancak iddianamede unsurları gösterilen suça ilişkin fiil ve faili hakkında verilir. Madde 2 – (1) Bu Kanunun uygulanmasında\na) Şüpheli: Soruşturma evresinde, suç şüphesi altında bulunan kişiyi,\nb) Sanık: Kovuşturmanın başlamasından itibaren hükmün kesinleşmesine kadar, suç şüphesi altında bulunan kişiyi,\nc) Müdafi: Şüpheli veya sanığın ceza muhakemesinde savunmasını yapan avukatı,\nd) Vekil: Katılan, suçtan zarar gören veya malen sorumlu kişiyi ceza muhakemesinde temsil eden avukatı,\ne) Soruşturma: Kanuna göre yetkili mercilerce suç şüphesinin öğrenilmesinden iddianamenin kabulüne kadar geçen evreyi,\nf) Kovuşturma: İddianamenin kabulüyle başlayıp, hükmün kesinleşmesine kadar geçen evreyi,\ng) İfade alma: Şüphelinin kolluk görevlileri veya Cumhuriyet savcısı tarafından soruşturma konusu suçla ilgili olarak dinlenmesini,\nh) Sorgu: Şüpheli veya sanığın hâkim veya mahkeme tarafından soruşturma veya kovuşturma konusu suçla ilgili olarak dinlenmesini,\ni) Malen sorumlu: Yargılama konusu işin hükme bağlanması ve bunun kesinleşmesinden sonra, maddî ve malî sorumluluk taşıyarak hükmün sonuçlarından etkilenecek veya bunlara katlanacak kişiyi,\nj) Suçüstü:\n1. Madde 1 – (1) Bu Kanun, ceza muhakemesinin nasıl yapılacağı hususundaki kurallar ile bu sürece katılan kişilerin hak, yetki ve yükümlülüklerini düzenler.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.225 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.2 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.1 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m1"
+        },
+        {
+          "question": "Türk Medenî Kanunu m.307 kapsamında “III. Tek başına evlât edinme” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m315",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m309",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m318",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m316"
+          ],
+          "answer": "Kaynağa göre: Madde 307- Evli olmayan kişi otuz yaşını doldurmuş ise tek başına evlât edinebilir. Madde 315- Evlât edinme kararı, evlât edinenin oturma yeri; birlikte evlât edinmede. Madde 309- Evlât edinme, küçüğün ana ve babasının rızasını gerektirir.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.307 - turkish_law_eski_4721_turk_medeni_kanunu_m307; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.315 - turkish_law_eski_4721_turk_medeni_kanunu_m315; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.309 - turkish_law_eski_4721_turk_medeni_kanunu_m309"
+        },
+        {
+          "question": "Bilgi Edinme Hakkı Kanunu m.17 kapsamında “Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m25",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m28"
+          ],
+          "answer": "Kaynağa göre: Madde 17- Açıklanması ya da zamanından önce açıklanması hâlinde, ülkenin ekonomik çıkarlarına zarar verecek veya haksız rekabet ve kazanca sebep olacak bilgi veya belgeler, bu Kanun kapsamı dışındadır. Madde 21- Kişinin izin verdiği hâller saklı kalmak üzere, özel hayatın gizliliği kapsamında, açıklanması hâlinde kişinin sağlık bilgileri ile özel ve aile hayatına, şeref ve haysiyetine, meslekî ve ekonomik değerlerine haksız müdahale oluşturacak bilgi veya belgeler, bilgi edinme hakkı kapsamı dışındadır. Ancak, bu bilgi ve belgeler kişilerin çalışma hayatını ve meslek onurunu etkileyecek nitelikte ise, istihbarata ilişkin bilgi ve belgeler bilgi edinme hakkı kapsamı içindedir.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.17 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.21 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.18 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18"
+        },
+        {
+          "question": "Türk Bayrağı Tüzüğü m.29 kapsamında “Flandra” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m7",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m30"
+          ],
+          "answer": "Kaynağa göre: Madde 29 – Flandra, boyu eninin 18 katı olan bayraktır. A) Cumhurbaşkanlığı forsu,\nB) Flandra,\nC) Sembolik bayraklar,\nD) Özel işaretli bayraklar,\n1 – Kare bayraklar,\n2 – Gidon bayraklar. Madde 1 – (Değişik: 22/2/2001 - 2001/2130 K.)\nBu Tüzük : Türk Bayrağının ve özel bayrakların standartlarını bayrağın hangi kumaşlardan yapılacağını, hangi kapalı yerlere konulacağını, nerelere fon olarak takılacağı veya asılacağını, kamu kurum ve kuruluşlarında ve bunlar dışındaki yerlerde ne zaman ve nasıl çekileceğini, nasıl katlanacağını, Türk Silahlı Kuvvetleri yüzer birliklerinde ve Türk bandıralı ticaret gemilerinde Bayrak çekme ve indirme zamanlarını, Bayrak çekilirken ve indirilirken yapılacak törenlere dair hususları, kimlerin tabutlarına Bayrak örtülebileceğini ulusal geleneklere göre Bayrağın diğer kullanılma şekli ve yerleri ile Türk Bayrağı Kanununun uygulanmasına dair diğer esasları kapsar.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.29 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.27 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.1 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1"
+        },
+        {
+          "question": "Türk Borçlar Kanunu m.314 kapsamında “2. İfa zamanı” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m193",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001",
+            "lawchatbot_turk_medeni_kanunu_medeni_hukuk_turk_borclar_kanunu_bo_0002",
+            "oricon_genel_000130"
+          ],
+          "answer": "Kaynağa göre: MADDE 314- Kiracı, aksine sözleşme ve yerel âdet olmadıkça, kira bedelini ve. İfa ettiği karşı edimin faizi ile birlikte geri verilmesini. Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.314 - turkish_law_eski_6098_turk_borclar_kanunu_m314; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.193 - turkish_law_eski_6098_turk_borclar_kanunu_m193; TURKISH_LAWCHATBOT_LOW_RISK_ONLY - Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku - lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001"
+        }
+      ]
+    },
+    "fine_tuned": {
+      "n": 240,
+      "recall@1": 0.8791666666666667,
+      "recall@3": 0.9416666666666667,
+      "recall@5": 0.9708333333333333,
+      "mrr@5": 0.9122222222222223,
+      "answer_token_f1": 0.39824667106380585,
+      "citation_hit_rate": 0.8,
+      "grounded_answer_rate": 1.0,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m254",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m231_p002",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m232_p001"
+          ],
+          "answer": "Kaynağa göre: Madde 225 – (1) Hüküm, ancak iddianamede unsurları gösterilen suça ilişkin fiil ve faili hakkında verilir. Madde 2 – (1) Bu Kanunun uygulanmasında\na) Şüpheli: Soruşturma evresinde, suç şüphesi altında bulunan kişiyi,\nb) Sanık: Kovuşturmanın başlamasından itibaren hükmün kesinleşmesine kadar, suç şüphesi altında bulunan kişiyi,\nc) Müdafi: Şüpheli veya sanığın ceza muhakemesinde savunmasını yapan avukatı,\nd) Vekil: Katılan, suçtan zarar gören veya malen sorumlu kişiyi ceza muhakemesinde temsil eden avukatı,\ne) Soruşturma: Kanuna göre yetkili mercilerce suç şüphesinin öğrenilmesinden iddianamenin kabulüne kadar geçen evreyi,\nf) Kovuşturma: İddianamenin kabulüyle başlayıp, hükmün kesinleşmesine kadar geçen evreyi,\ng) İfade alma: Şüphelinin kolluk görevlileri veya Cumhuriyet savcısı tarafından soruşturma konusu suçla ilgili olarak dinlenmesini,\nh) Sorgu: Şüpheli veya sanığın hâkim veya mahkeme tarafından soruşturma veya kovuşturma konusu suçla ilgili olarak dinlenmesini,\ni) Malen sorumlu: Yargılama konusu işin hükme bağlanması ve bunun kesinleşmesinden sonra, maddî ve malî sorumluluk taşıyarak hükmün sonuçlarından etkilenecek veya bunlara katlanacak kişiyi,\nj) Suçüstü:\n1. Madde 254 – (Değişik: 6/12/2006-5560/25 md.)\n(1) Kamu davası açıldıktan sonra kovuşturma konusu suçun uzlaşma kapsamında olduğunun anlaşılması halinde, kovuşturma dosyası, uzlaştırma işlemlerinin 253 üncü maddede belirtilen esas ve usûle göre yerine getirilmesi için uzlaştırma bürosuna gönderilir.[99].\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.225 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.2 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m2; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu m.254 - turkish_law_eski_5271_ceza_muhakemesi_kanunu_m254"
+        },
+        {
+          "question": "Türk Medenî Kanunu m.307 kapsamında “III. Tek başına evlât edinme” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m315",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m309",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m318",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m316"
+          ],
+          "answer": "Kaynağa göre: Madde 307- Evli olmayan kişi otuz yaşını doldurmuş ise tek başına evlât edinebilir. Madde 315- Evlât edinme kararı, evlât edinenin oturma yeri; birlikte evlât edinmede. Madde 309- Evlât edinme, küçüğün ana ve babasının rızasını gerektirir.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.307 - turkish_law_eski_4721_turk_medeni_kanunu_m307; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.315 - turkish_law_eski_4721_turk_medeni_kanunu_m315; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Medenî Kanunu m.309 - turkish_law_eski_4721_turk_medeni_kanunu_m309"
+        },
+        {
+          "question": "Bilgi Edinme Hakkı Kanunu m.17 kapsamında “Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m25",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m28"
+          ],
+          "answer": "Kaynağa göre: Madde 17- Açıklanması ya da zamanından önce açıklanması hâlinde, ülkenin ekonomik çıkarlarına zarar verecek veya haksız rekabet ve kazanca sebep olacak bilgi veya belgeler, bu Kanun kapsamı dışındadır. Ancak, bu bilgi ve belgeler kişilerin çalışma hayatını ve meslek onurunu etkileyecek nitelikte ise, istihbarata ilişkin bilgi ve belgeler bilgi edinme hakkı kapsamı içindedir. Madde 21- Kişinin izin verdiği hâller saklı kalmak üzere, özel hayatın gizliliği kapsamında, açıklanması hâlinde kişinin sağlık bilgileri ile özel ve aile hayatına, şeref ve haysiyetine, meslekî ve ekonomik değerlerine haksız müdahale oluşturacak bilgi veya belgeler, bilgi edinme hakkı kapsamı dışındadır.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.17 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.18 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Bilgi Edinme Hakkı Kanunu m.21 - turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21"
+        },
+        {
+          "question": "Türk Bayrağı Tüzüğü m.29 kapsamında “Flandra” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m7",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m30"
+          ],
+          "answer": "Kaynağa göre: Madde 29 – Flandra, boyu eninin 18 katı olan bayraktır. A) Cumhurbaşkanlığı forsu,\nB) Flandra,\nC) Sembolik bayraklar,\nD) Özel işaretli bayraklar,\n1 – Kare bayraklar,\n2 – Gidon bayraklar. Madde 1 – (Değişik: 22/2/2001 - 2001/2130 K.)\nBu Tüzük : Türk Bayrağının ve özel bayrakların standartlarını bayrağın hangi kumaşlardan yapılacağını, hangi kapalı yerlere konulacağını, nerelere fon olarak takılacağı veya asılacağını, kamu kurum ve kuruluşlarında ve bunlar dışındaki yerlerde ne zaman ve nasıl çekileceğini, nasıl katlanacağını, Türk Silahlı Kuvvetleri yüzer birliklerinde ve Türk bandıralı ticaret gemilerinde Bayrak çekme ve indirme zamanlarını, Bayrak çekilirken ve indirilirken yapılacak törenlere dair hususları, kimlerin tabutlarına Bayrak örtülebileceğini ulusal geleneklere göre Bayrağın diğer kullanılma şekli ve yerleri ile Türk Bayrağı Kanununun uygulanmasına dair diğer esasları kapsar.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.29 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.27 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Bayrağı Tüzüğü m.1 - turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1"
+        },
+        {
+          "question": "Türk Borçlar Kanunu m.314 kapsamında “2. İfa zamanı” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m193",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001",
+            "lawchatbot_turk_medeni_kanunu_medeni_hukuk_turk_borclar_kanunu_bo_0002",
+            "oricon_genel_000130"
+          ],
+          "answer": "Kaynağa göre: MADDE 314- Kiracı, aksine sözleşme ve yerel âdet olmadıkça, kira bedelini ve. İfa ettiği karşı edimin faizi ile birlikte geri verilmesini. Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku.\n\nKaynaklar: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.314 - turkish_law_eski_6098_turk_borclar_kanunu_m314; TURKISH_LAW_ESKI_LOW_RISK_ONLY - Türk Borçlar Kanunu m.193 - turkish_law_eski_6098_turk_borclar_kanunu_m193; TURKISH_LAWCHATBOT_LOW_RISK_ONLY - Türk Borçlar Kanunu / Borçlar Hukuku + İş Hukuku + İcra ve İflas Hukuku - lawchatbot_turk_borclar_kanunu_borclar_hukuku_is_hukuku_icra_ve_i_0001"
+        }
+      ]
+    }
+  }
+}

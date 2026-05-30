@@ -1,0 +1,71 @@
+CENG493 - Term Project Assignment 
+Improving Turkish Legal Question Answering with an Optimized 
+RAG Pipeline 
+ 
+1. Team Structure 
+Teams must consist of 2–3 students.  
+ 
+2. Project Objective 
+Develop a domain-adapted Retrieval-Augmented Generation (RAG) system for Turkish legal 
+question answering. The system may include optimization in embedding, reranking, and LLM 
+components. 
+ 
+3. Problem Definition 
+Input: A Turkish legal question. 
+Output: A grounded, source-supported, context-aware answer. 
+The system must minimize hallucination and ensure citation consistency.  
+4. Dataset Requirements 
+A) Finetune Corpus: 
+ 
+[1] https://www.kaggle.com/datasets/batuhankalem/turkish-
+law-dataset-for-llm-finetuning 
+[2] https://huggingface.co/datasets/Renicames/turkish-law-
+chatbot 
+ 
+B) QA Benchmark: 
+Teams must prepare or use a gold test set containing 150–300 Turkish legal questions with verified 
+answers. 
+5. Required System Architecture 
+Baseline Pipeline: 
+Question → Embedding → Vector Search → (Optional Reranker) → LLM → Answer 
+Students must implement ablation experiments comparing: 
+1. Baseline RAG 
+2. + Embedding tuning 
+3. + Reranker 
+4. + LLM fine-tuning 
+5. Fully optimized system 
+6. Optimization Requirements 
+Embedding Layer: 
+- Domain adaptation 
+- Contrastive fine-tuning 
+- Hard negative mining- Hybrid retrieval (BM25 + dense) 
+Reranker: 
+- Cross-encoder fine-tuning- Ranking optimization 
+LLM: 
+- Instruction tuning 
+- LoRA or QLoRA 
+- Supervised fine-tuning 
+- Retrieval-aware prompting 
+7. Evaluation Metrics 
+Retrieval Metrics: 
+- Recall@5, Recall@10 
+- MRR 
+- nDCG 
+QA Metrics: 
+- Exact Match (EM) 
+- F1 Score 
+- BLEU / ROUGE 
+- Faithfulness score- Citation accuracy 
+Hallucination analysis is mandatory. 
+8. Technical Requirements 
+- Code must be submitted via GitHub. 
+- Experiments must be reproducible. 
+- Hyperparameters must be documented. 
+- GPU usage must be reported. 
+9. Final Deliverables 
+- 10–15 page technical report 
+- GitHub repository 
+- 15-minute technical presentation 
+- Live system demonstration 
+- Error analysis section 
+ 

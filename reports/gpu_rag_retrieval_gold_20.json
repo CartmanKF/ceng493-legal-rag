@@ -1,0 +1,238 @@
+{
+  "benchmark": "Datasets_Ceng493_legal_rag\\gold_benchmark.json",
+  "custom_docs": null,
+  "results": {
+    "base_rag": {
+      "n": 20,
+      "embedding_model": "intfloat/multilingual-e5-base",
+      "reranker_model": null,
+      "llm_model": "Qwen/Qwen2.5-3B-Instruct",
+      "adapter": null,
+      "recall@1": 0.6,
+      "recall@5": 0.85,
+      "recall@10": 0.85,
+      "mrr@10": 0.6699999999999999,
+      "ndcg@5": 0.7132994242093664,
+      "ndcg@10": 0.7132994242093664,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.0,
+      "answer_rouge_l": 0.0,
+      "citation_hit_rate": 0.9,
+      "faithfulness_token_support": 0.0,
+      "unsupported_sentence_rate": 0.0,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m218",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m224",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m230",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m228",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m217",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m192",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m264",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m12",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m223_p002"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Türk Medenî Kanunu m.307 kapsamında “III. Tek başına evlât edinme” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m306",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m308",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m309",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m315",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m313",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m316",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m320",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m135",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m305"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Bilgi Edinme Hakkı Kanunu m.17 kapsamında “Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m16",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m23",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m8",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m7",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m25",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m30",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m18",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m26"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Türk Bayrağı Tüzüğü m.29 kapsamında “Flandra” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m32",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m25",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m30",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m22_p003",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m22_p001",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m15",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m31"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Türk Borçlar Kanunu m.314 kapsamında “2. İfa zamanı” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314"
+          ],
+          "retrieved_ids": [
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_hukuk_muhakemeleri_0001_433a04",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_icra_ve_iflas_hukuk_0001",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m714",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_hukuk_muhakemeleri_0006_183768",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m213",
+            "oricon_borclar_000191",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m315",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m202",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m72",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m73"
+          ],
+          "answer": ""
+        }
+      ]
+    },
+    "fine_tuned_rag": {
+      "n": 20,
+      "embedding_model": "artifacts/gpu/embedding_model",
+      "reranker_model": "artifacts/gpu/reranker_model",
+      "llm_model": "Qwen/Qwen2.5-3B-Instruct",
+      "adapter": "artifacts/gpu/llm_lora",
+      "recall@1": 0.85,
+      "recall@5": 0.85,
+      "recall@10": 0.85,
+      "mrr@10": 0.85,
+      "ndcg@5": 0.85,
+      "ndcg@10": 0.85,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.0,
+      "answer_rouge_l": 0.0,
+      "citation_hit_rate": 0.9,
+      "faithfulness_token_support": 0.0,
+      "unsupported_sentence_rate": 0.0,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m224",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m218",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m232_p002",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m17",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m232_p001",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m250_p005",
+            "oricon_ceza_muhakemesi_000067",
+            "oricon_ceza_muhakemesi_000013",
+            "oricon_ceza_muhakemesi_idare_000002"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Türk Medenî Kanunu m.307 kapsamında “III. Tek başına evlât edinme” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4721_turk_medeni_kanunu_m307",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m308",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m309",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m306",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m316",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m315",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m305",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m313",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m314",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m144"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Bilgi Edinme Hakkı Kanunu m.17 kapsamında “Ülkenin ekonomik çıkarlarına ilişkin bilgi veya belgeler” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m17",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m7",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m21",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m8",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m26",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m4",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m16",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m25",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m30",
+            "turkish_law_eski_4982_bilgi_edinme_hakki_kanunu_m23"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Türk Bayrağı Tüzüğü m.29 kapsamında “Flandra” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m29",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m27",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m32",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m1",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m5",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m23",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m13",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m16",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m31",
+            "turkish_law_eski_85_9034_turk_bayragi_tuzugu_m17"
+          ],
+          "answer": ""
+        },
+        {
+          "question": "Türk Borçlar Kanunu m.314 kapsamında “2. İfa zamanı” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_6098_turk_borclar_kanunu_m314"
+          ],
+          "retrieved_ids": [
+            "oricon_borclar_000069",
+            "oricon_borclar_000191",
+            "lawchatbot_turk_borclar_kanunu_borclar_hukuku_icra_ve_iflas_hukuk_0006",
+            "oricon_icra_iflas_borclar_000048",
+            "oricon_icra_iflas_borclar_000001",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m805",
+            "turkish_law_eski_6098_turk_borclar_kanunu_m72",
+            "turkish_law_eski_4721_turk_medeni_kanunu_m714",
+            "oricon_icra_iflas_borclar_000041",
+            "oricon_icra_iflas_000113"
+          ],
+          "answer": ""
+        }
+      ]
+    }
+  }
+}

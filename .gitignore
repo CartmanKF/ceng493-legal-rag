@@ -1,0 +1,11 @@
+.venv/
+.miniconda/
+.conda-envs/
+Miniconda3-latest-Windows-x86_64.exe
+__pycache__/
+*.pyc
+artifacts/gpu/**/model.safetensors
+artifacts/gpu/**/adapter_model.safetensors
+artifacts/gpu/*_smoke/
+reports/*.png
+reports/*.tmp

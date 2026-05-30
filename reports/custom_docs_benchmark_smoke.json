@@ -1,0 +1,206 @@
+{
+  "benchmark": "examples\\custom_benchmark.json",
+  "custom_docs": "examples\\custom_docs.jsonl",
+  "results": {
+    "base": {
+      "n": 2,
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "ndcg@5": 1.0,
+      "ndcg@10": 1.0,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.8472222222222222,
+      "answer_rouge_l": 0.8472222222222222,
+      "citation_hit_rate": 1.0,
+      "top1_citation_accuracy": 1.0,
+      "grounded_answer_rate": 1.0,
+      "faithfulness_token_support": 0.7380952380952381,
+      "unsupported_sentence_rate": 0.5,
+      "examples": [
+        {
+          "question": "CMK m.225'e gore mahkeme fiilin nitelendirilmesinde neyle baglidir?",
+          "gold_ids": [
+            "custom_cmk_225"
+          ],
+          "retrieved_ids": [
+            "custom_cmk_225"
+          ],
+          "answer": "Mahkeme, fiilin nitelendirilmesinde iddia ve savunmalarla bagli degildir.\n\nCitations: CUSTOM_DOC - CMK m.225"
+        },
+        {
+          "question": "TMK m.307'ye gore evli olmayan kisi hangi sartla tek basina evlat edinebilir?",
+          "gold_ids": [
+            "custom_tmk_307"
+          ],
+          "retrieved_ids": [
+            "custom_tmk_307"
+          ],
+          "answer": "Turk Medeni Kanunu madde 307 kapsaminda evli olmayan kisi otuz yasini doldurmus ise tek basina evlat edinebilir.\n\nCitations: CUSTOM_DOC - TMK m.307"
+        }
+      ]
+    },
+    "adapted_retriever": {
+      "n": 2,
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "ndcg@5": 1.0,
+      "ndcg@10": 1.0,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.8472222222222222,
+      "answer_rouge_l": 0.8472222222222222,
+      "citation_hit_rate": 1.0,
+      "top1_citation_accuracy": 1.0,
+      "grounded_answer_rate": 1.0,
+      "faithfulness_token_support": 0.7380952380952381,
+      "unsupported_sentence_rate": 0.5,
+      "examples": [
+        {
+          "question": "CMK m.225'e gore mahkeme fiilin nitelendirilmesinde neyle baglidir?",
+          "gold_ids": [
+            "custom_cmk_225"
+          ],
+          "retrieved_ids": [
+            "custom_cmk_225"
+          ],
+          "answer": "Mahkeme, fiilin nitelendirilmesinde iddia ve savunmalarla bagli degildir.\n\nCitations: CUSTOM_DOC - CMK m.225"
+        },
+        {
+          "question": "TMK m.307'ye gore evli olmayan kisi hangi sartla tek basina evlat edinebilir?",
+          "gold_ids": [
+            "custom_tmk_307"
+          ],
+          "retrieved_ids": [
+            "custom_tmk_307"
+          ],
+          "answer": "Turk Medeni Kanunu madde 307 kapsaminda evli olmayan kisi otuz yasini doldurmus ise tek basina evlat edinebilir.\n\nCitations: CUSTOM_DOC - TMK m.307"
+        }
+      ]
+    },
+    "adapted_reranker": {
+      "n": 2,
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "ndcg@5": 1.0,
+      "ndcg@10": 1.0,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.8472222222222222,
+      "answer_rouge_l": 0.8472222222222222,
+      "citation_hit_rate": 1.0,
+      "top1_citation_accuracy": 1.0,
+      "grounded_answer_rate": 1.0,
+      "faithfulness_token_support": 0.7380952380952381,
+      "unsupported_sentence_rate": 0.5,
+      "examples": [
+        {
+          "question": "CMK m.225'e gore mahkeme fiilin nitelendirilmesinde neyle baglidir?",
+          "gold_ids": [
+            "custom_cmk_225"
+          ],
+          "retrieved_ids": [
+            "custom_cmk_225"
+          ],
+          "answer": "Mahkeme, fiilin nitelendirilmesinde iddia ve savunmalarla bagli degildir.\n\nCitations: CUSTOM_DOC - CMK m.225"
+        },
+        {
+          "question": "TMK m.307'ye gore evli olmayan kisi hangi sartla tek basina evlat edinebilir?",
+          "gold_ids": [
+            "custom_tmk_307"
+          ],
+          "retrieved_ids": [
+            "custom_tmk_307"
+          ],
+          "answer": "Turk Medeni Kanunu madde 307 kapsaminda evli olmayan kisi otuz yasini doldurmus ise tek basina evlat edinebilir.\n\nCitations: CUSTOM_DOC - TMK m.307"
+        }
+      ]
+    },
+    "adapted_llm": {
+      "n": 2,
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "ndcg@5": 1.0,
+      "ndcg@10": 1.0,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.791497975708502,
+      "answer_rouge_l": 0.791497975708502,
+      "citation_hit_rate": 1.0,
+      "top1_citation_accuracy": 1.0,
+      "grounded_answer_rate": 1.0,
+      "faithfulness_token_support": 0.6940559440559441,
+      "unsupported_sentence_rate": 0.5,
+      "examples": [
+        {
+          "question": "CMK m.225'e gore mahkeme fiilin nitelendirilmesinde neyle baglidir?",
+          "gold_ids": [
+            "custom_cmk_225"
+          ],
+          "retrieved_ids": [
+            "custom_cmk_225"
+          ],
+          "answer": "Kaynaga gore: Mahkeme, fiilin nitelendirilmesinde iddia ve savunmalarla bagli degildir.\n\nKaynaklar: CUSTOM_DOC - CMK m.225"
+        },
+        {
+          "question": "TMK m.307'ye gore evli olmayan kisi hangi sartla tek basina evlat edinebilir?",
+          "gold_ids": [
+            "custom_tmk_307"
+          ],
+          "retrieved_ids": [
+            "custom_tmk_307"
+          ],
+          "answer": "Kaynaga gore: Turk Medeni Kanunu madde 307 kapsaminda evli olmayan kisi otuz yasini doldurmus ise tek basina evlat edinebilir.\n\nKaynaklar: CUSTOM_DOC - TMK m.307"
+        }
+      ]
+    },
+    "fine_tuned": {
+      "n": 2,
+      "recall@1": 1.0,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "ndcg@5": 1.0,
+      "ndcg@10": 1.0,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.791497975708502,
+      "answer_rouge_l": 0.791497975708502,
+      "citation_hit_rate": 1.0,
+      "top1_citation_accuracy": 1.0,
+      "grounded_answer_rate": 1.0,
+      "faithfulness_token_support": 0.6940559440559441,
+      "unsupported_sentence_rate": 0.5,
+      "examples": [
+        {
+          "question": "CMK m.225'e gore mahkeme fiilin nitelendirilmesinde neyle baglidir?",
+          "gold_ids": [
+            "custom_cmk_225"
+          ],
+          "retrieved_ids": [
+            "custom_cmk_225"
+          ],
+          "answer": "Kaynaga gore: Mahkeme, fiilin nitelendirilmesinde iddia ve savunmalarla bagli degildir.\n\nKaynaklar: CUSTOM_DOC - CMK m.225"
+        },
+        {
+          "question": "TMK m.307'ye gore evli olmayan kisi hangi sartla tek basina evlat edinebilir?",
+          "gold_ids": [
+            "custom_tmk_307"
+          ],
+          "retrieved_ids": [
+            "custom_tmk_307"
+          ],
+          "answer": "Kaynaga gore: Turk Medeni Kanunu madde 307 kapsaminda evli olmayan kisi otuz yasini doldurmus ise tek basina evlat edinebilir.\n\nKaynaklar: CUSTOM_DOC - TMK m.307"
+        }
+      ]
+    }
+  }
+}

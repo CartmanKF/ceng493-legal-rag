@@ -1,0 +1,22 @@
+{
+  "base_embedding": {
+    "model": "intfloat/multilingual-e5-base",
+    "benchmark": "rag_eval",
+    "n": 200,
+    "recall@1": 0.865,
+    "recall@3": 0.96,
+    "recall@5": 0.97,
+    "recall@10": 0.99,
+    "mrr@10": 0.9152619047619046
+  },
+  "fine_tuned_embedding": {
+    "model": "artifacts/gpu/embedding_model",
+    "benchmark": "rag_eval",
+    "n": 200,
+    "recall@1": 0.855,
+    "recall@3": 0.94,
+    "recall@5": 0.97,
+    "recall@10": 0.995,
+    "mrr@10": 0.9049642857142856
+  }
+}

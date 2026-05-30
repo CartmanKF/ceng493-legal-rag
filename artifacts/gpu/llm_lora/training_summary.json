@@ -1,0 +1,5 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "steps": 60,
+  "avg_loss": 0.9743665272990862
+}

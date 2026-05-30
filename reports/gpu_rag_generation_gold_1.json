@@ -1,0 +1,76 @@
+{
+  "benchmark": "Datasets_Ceng493_legal_rag\\gold_benchmark.json",
+  "custom_docs": null,
+  "results": {
+    "base_rag": {
+      "n": 1,
+      "embedding_model": "intfloat/multilingual-e5-base",
+      "reranker_model": null,
+      "llm_model": "Qwen/Qwen2.5-3B-Instruct",
+      "adapter": null,
+      "recall@1": 0.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 0.25,
+      "ndcg@5": 0.43067655807339306,
+      "ndcg@10": 0.43067655807339306,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.25,
+      "answer_rouge_l": 0.21875,
+      "citation_hit_rate": 0.0,
+      "faithfulness_token_support": 0.375,
+      "unsupported_sentence_rate": 0.5,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m218",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m224",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m230",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m228"
+          ],
+          "answer": "Kaynak: [1] Ceza Muhakemesi Kanunu m.218\n\nCevap: Ceza Muhakemesi Kanunu m.225 kapsamında \"Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi\" düzenlenmemektedir. Bu konuda belirtilen maddeler (m.218 ve m.224) sadece ceza"
+        }
+      ]
+    },
+    "fine_tuned_rag": {
+      "n": 1,
+      "embedding_model": "artifacts/gpu/embedding_model",
+      "reranker_model": "artifacts/gpu/reranker_model",
+      "llm_model": "Qwen/Qwen2.5-3B-Instruct",
+      "adapter": "artifacts/gpu/llm_lora",
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr@10": 1.0,
+      "ndcg@5": 1.0,
+      "ndcg@10": 1.0,
+      "answer_exact_match": 0.0,
+      "answer_token_f1": 0.8695652173913044,
+      "answer_rouge_l": 0.8695652173913044,
+      "citation_hit_rate": 1.0,
+      "faithfulness_token_support": 0.6896551724137931,
+      "unsupported_sentence_rate": 0.3333333333333333,
+      "examples": [
+        {
+          "question": "Ceza Muhakemesi Kanunu m.225 kapsamında “Hükmün konusu ve suçu değerlendirmede mahkemenin yetkisi” nasıl düzenlenmiştir?",
+          "gold_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225"
+          ],
+          "retrieved_ids": [
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m225",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m218",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m232_p001",
+            "turkish_law_eski_5271_ceza_muhakemesi_kanunu_m250_p005",
+            "oricon_ceza_muhakemesi_000013"
+          ],
+          "answer": "Kaynağa göre: Madde 225 – (1) Hüküm, ancak iddianamede unsurları gösterilen suça ilişkin fiil ve faili hakkında verilir.\n(2) Mahkeme, fiilin nitelendirilmesinde iddia ve savunmalarla bağlı değildir.\n\nKaynak: TURKISH_LAW_ESKI_LOW_RISK_ONLY - Ceza Muhakemesi Kanunu"
+        }
+      ]
+    }
+  }
+}

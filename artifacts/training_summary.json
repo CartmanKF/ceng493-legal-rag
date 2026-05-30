@@ -1,0 +1,6 @@
+{
+  "embedding_training_rows": 2059,
+  "reranker_training_rows": 6752,
+  "retriever_weight_terms": 2323,
+  "reranker_weight_terms": 2606
+}

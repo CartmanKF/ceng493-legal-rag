@@ -1,0 +1,26 @@
+[
+  {
+    "question_id": "custom_001",
+    "question": "CMK m.225'e gore mahkeme fiilin nitelendirilmesinde neyle baglidir?",
+    "verified_answer": "Mahkeme, fiilin nitelendirilmesinde iddia ve savunmalarla bagli degildir. Kaynak: CUSTOM_DOC - CMK m.225",
+    "gold_sources": [
+      {
+        "source_id": "custom_cmk_225",
+        "corpus_row_id": "custom_cmk_225",
+        "citation_label": "CUSTOM_DOC - CMK m.225"
+      }
+    ]
+  },
+  {
+    "question_id": "custom_002",
+    "question": "TMK m.307'ye gore evli olmayan kisi hangi sartla tek basina evlat edinebilir?",
+    "verified_answer": "Evli olmayan kisi otuz yasini doldurmus ise tek basina evlat edinebilir. Kaynak: CUSTOM_DOC - TMK m.307",
+    "gold_sources": [
+      {
+        "source_id": "custom_tmk_307",
+        "corpus_row_id": "custom_tmk_307",
+        "citation_label": "CUSTOM_DOC - TMK m.307"
+      }
+    ]
+  }
+]

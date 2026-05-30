@@ -1,0 +1,6 @@
+{
+  "model": "intfloat/multilingual-e5-base",
+  "device": "cuda",
+  "steps": 300,
+  "avg_loss": 0.05612841425463557
+}

@@ -1,0 +1,6 @@
+{
+  "model": "BAAI/bge-reranker-v2-m3",
+  "device": "cuda",
+  "steps": 30,
+  "avg_loss": 0.3734722341100375
+}

@@ -1,0 +1,14 @@
+# The core project runs with the Python standard library only.
+#
+# Optional packages for full neural finetuning/inference:
+torch
+transformers
+datasets
+peft
+sentence-transformers
+accelerate
+bitsandbytes
+scikit-learn
+pandas
+evaluate
+rouge-score
