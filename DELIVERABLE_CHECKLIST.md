@@ -42,4 +42,4 @@
 ## Notes
 
 - Large GPU model weight files are kept local under `artifacts/gpu` and ignored for normal Git commits because they exceed typical GitHub file limits.
-- The code and training scripts are reproducible, so checkpoints can be regenerated on GPU.
+- The code and training scripts are reproducible, so checkpoints can be recreated on GPU.

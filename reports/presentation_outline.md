@@ -67,7 +67,7 @@ Speaker note: Checkpoints are under `artifacts/gpu`.
 - Grounding: citation hit, top-1 citation accuracy.
 - Hallucination proxy: faithfulness token support, unsupported sentence rate.
 
-Speaker note: Explain why Exact Match is too strict for generated legal answers.
+Speaker note: Explain why Exact Match is too strict for citation-based legal answers.
 
 ## Slide 9 - Full Gold Benchmark Results
 
@@ -120,7 +120,7 @@ Speaker note: Be honest about limitations; this usually helps evaluation credibi
 
 - Run one `ask` command on the default dataset.
 - Run `scripts/evaluate.py` on `examples/custom_docs.jsonl` and `examples/custom_benchmark.json`.
-- Show generated report JSON and citations.
+- Show report JSON and citations.
 
 Speaker note: The custom data smoke test already passes with Recall@1 = 1.0.
 

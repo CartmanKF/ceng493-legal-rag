@@ -1,6 +1,3 @@
-# The core project runs with the Python standard library only.
-#
-# Optional packages for full neural finetuning/inference:
 torch
 transformers
 datasets

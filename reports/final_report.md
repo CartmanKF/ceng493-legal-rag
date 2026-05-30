@@ -166,7 +166,7 @@ The project includes `examples/custom_docs.jsonl` and `examples/custom_benchmark
 Observed failure modes:
 
 - Base neural RAG can retrieve a nearby legal article and then answer as if the target article is absent. This happened in the generation smoke test for CMK m.225 when the top document was CMK m.218.
-- Exact Match is near zero because generated answers include citations and paraphrasing; token F1 and ROUGE-L better reflect answer quality.
+- Exact Match is near zero because system answers include citations and paraphrasing; token F1 and ROUGE-L better reflect answer quality.
 - Some lightweight answers concatenate too much context when high-overlap neighboring articles are retrieved. This increases token support but can lower concise answer quality.
 - Fine-tuned embedding alone can underperform the base E5 model on some gold subsets, likely because the limited training schedule and hard-negative distribution overfit some patterns.
 
@@ -181,7 +181,7 @@ Recommended next improvements:
 
 - Train the embedding model longer with validation-based checkpoint selection.
 - Cache dense document embeddings for faster full neural evaluation.
-- Add human legal review for a representative sample of generated answers.
+- Add human legal review for a representative sample of system answers.
 
 ## 14. Reproducibility
 

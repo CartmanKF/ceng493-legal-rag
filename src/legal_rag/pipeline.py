@@ -34,11 +34,11 @@ class RAGPipeline:
         retrieved = self.retriever.search(question, top_k=retrieve_k)
         reranked = rerank(question, retrieved, self.reranker_weights, top_k=final_k)
         docs = [item.document for item in reranked]
-        generated = generate_answer(question, docs, self.fine_tuned_style)
+        answer_payload = generate_answer(question, docs, self.fine_tuned_style)
         return {
             "question": question,
-            "answer": generated["answer"],
-            "citations": generated["citations"],
+            "answer": answer_payload["answer"],
+            "citations": answer_payload["citations"],
             "contexts": [
                 {
                     "id": doc.get("id"),

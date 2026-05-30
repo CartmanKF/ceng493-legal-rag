@@ -132,8 +132,8 @@ def generate_answer(tokenizer, model, question, docs, max_new_tokens):
             do_sample=False,
             pad_token_id=tokenizer.eos_token_id,
         )
-    generated = tokenizer.decode(output[0][encoded["input_ids"].shape[1] :], skip_special_tokens=True).strip()
-    return generated, citations
+    answer = tokenizer.decode(output[0][encoded["input_ids"].shape[1] :], skip_special_tokens=True).strip()
+    return answer, citations
 
 
 def evaluate_system(name, docs, benchmark, embed_model, reranker_model, llm_model, adapter_path, args):
