@@ -9,3 +9,6 @@ artifacts/gpu/**/adapter_model.safetensors
 artifacts/gpu/*_smoke/
 reports/*.png
 reports/*.tmp
+build/
+dist/
+*.spec
