@@ -37,6 +37,15 @@ class LegalRAGApp:
 
         self.mode_var = tk.StringVar(value="fine_tuned")
         self.status_var = tk.StringVar(value="Model yukleniyor...")
+        self.mode_labels = {
+            "Base RAG": "base",
+            "Fine-tuned RAG": "fine_tuned",
+            "Sadece retriever fine-tuned": "adapted_retriever",
+            "Sadece reranker fine-tuned": "adapted_reranker",
+            "Sadece cevap stili fine-tuned": "adapted_llm",
+        }
+        self.label_by_mode = {value: key for key, value in self.mode_labels.items()}
+        self.mode_label_var = tk.StringVar(value=self.label_by_mode[self.mode_var.get()])
 
         self.build_ui()
         threading.Thread(target=self.load_pipeline, daemon=True).start()
@@ -55,13 +64,13 @@ class LegalRAGApp:
         ttk.Label(top, text="Mod").pack(side=tk.LEFT)
         mode = ttk.Combobox(
             top,
-            textvariable=self.mode_var,
-            values=["base", "fine_tuned", "adapted_retriever", "adapted_reranker", "adapted_llm"],
+            textvariable=self.mode_label_var,
+            values=list(self.mode_labels.keys()),
             state="readonly",
-            width=22,
+            width=30,
         )
         mode.pack(side=tk.LEFT, padx=(8, 16))
-        mode.bind("<<ComboboxSelected>>", lambda _: self.reload_pipeline())
+        mode.bind("<<ComboboxSelected>>", lambda _: self.change_mode())
 
         ttk.Label(top, textvariable=self.status_var).pack(side=tk.LEFT)
 
@@ -118,6 +127,10 @@ class LegalRAGApp:
         self.status_var.set("Model yukleniyor...")
         threading.Thread(target=self.load_pipeline, daemon=True).start()
 
+    def change_mode(self):
+        self.mode_var.set(self.mode_labels[self.mode_label_var.get()])
+        self.reload_pipeline()
+
     def set_question(self, text: str):
         self.question.delete("1.0", tk.END)
         self.question.insert("1.0", text)
@@ -160,7 +173,7 @@ class LegalRAGApp:
     def show_answer(self, result: dict):
         self.last_result = result
         self.answer.delete("1.0", tk.END)
-        self.answer.insert("1.0", result["answer"])
+        self.answer.insert("1.0", self.answer_without_sources(result["answer"]))
         self.contexts.delete("1.0", tk.END)
         lines = []
         for index, context in enumerate(result["contexts"], start=1):
@@ -168,6 +181,13 @@ class LegalRAGApp:
             lines.append(f"   {context['citation']}")
         self.contexts.insert("1.0", "\n".join(lines))
         self.status_var.set("Hazir")
+
+    @staticmethod
+    def answer_without_sources(answer: str) -> str:
+        for marker in ["\n\nKaynaklar:", "\n\nCitations:"]:
+            if marker in answer:
+                return answer.split(marker, 1)[0].strip()
+        return answer.strip()
 
     def copy_json(self):
         if not self.last_result:

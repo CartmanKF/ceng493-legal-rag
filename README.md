@@ -43,12 +43,6 @@ Current dataset sizes:
 Launch the desktop interface:
 
 ```powershell
-.\RAG_Arayuz.exe
-```
-
-If Windows blocks the executable, use the batch launcher:
-
-```powershell
 .\RAG_Arayuz.bat
 ```
 
