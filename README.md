@@ -1,6 +1,6 @@
 # Turkish Legal RAG - CENG493
 
-This repository contains a reproducible Turkish legal RAG project using the provided `Datasets_Ceng493_legal_rag` dataset instead of the datasets listed in the original assignment PDF.
+This repository contains a Turkish legal RAG project using the provided `Datasets_Ceng493_legal_rag` dataset instead of the datasets listed in the original assignment PDF.
 
 The Kaggle `turkishlaw-dataset-for-llm-finetuning` and Hugging Face `Renicames/turkish-lawchatbot` datasets were not used.
 
@@ -13,7 +13,7 @@ The Kaggle `turkishlaw-dataset-for-llm-finetuning` and Hugging Face `Renicames/t
 - Ablation study for adapted retriever, adapted reranker, and adapted answer behavior.
 - GPU fine-tuning scripts for embedding, reranker, and LLM LoRA/QLoRA.
 - GPU neural RAG evaluation script.
-- Progress report PDF, final technical report PDF, deliverable checklist, and presentation outline.
+- Final technical report PDF.
 
 ## Dataset
 
@@ -133,10 +133,7 @@ GPU neural smoke tests:
 
 ## Reports and Deliverables
 
-- `reports/progress_report.pdf`
 - `reports/final_report.pdf`
-- `reports/presentation_outline.md`
-- `DELIVERABLE_CHECKLIST.md`
 
 ## Tests
 
