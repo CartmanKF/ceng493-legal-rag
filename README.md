@@ -46,6 +46,8 @@ Launch the desktop interface:
 .\RAG_Arayuz.bat
 ```
 
+The desktop interface retrieves legal sources with the RAG pipeline and generates the final answer with `Qwen/Qwen2.5-3B-Instruct`. Fine-tuned modes load the LoRA adapter from `artifacts\gpu\llm_lora`. The first answer can take longer because the LLM is loaded onto the GPU.
+
 Train lightweight domain adapters:
 
 ```powershell

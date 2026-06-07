@@ -9,6 +9,97 @@ from tkinter import messagebox, ttk
 from .pipeline import build_pipeline
 
 
+class LLMAnswerer:
+    def __init__(self, root_dir: Path):
+        self.root_dir = root_dir
+        self.model_name = "Qwen/Qwen2.5-3B-Instruct"
+        self.adapter_dir = root_dir / "artifacts" / "gpu" / "llm_lora"
+        self.loaded_key = None
+        self.tokenizer = None
+        self.model = None
+
+    def load(self, use_adapter: bool):
+        key = "fine_tuned" if use_adapter else "base"
+        if self.loaded_key == key and self.model is not None:
+            return
+        if self.model is not None:
+            import gc
+            import torch
+
+            del self.model
+            self.model = None
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        import torch
+        from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name, trust_remote_code=True)
+        if self.tokenizer.pad_token is None:
+            self.tokenizer.pad_token = self.tokenizer.eos_token
+        quantization = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_use_double_quant=True,
+        )
+        self.model = AutoModelForCausalLM.from_pretrained(
+            self.model_name,
+            quantization_config=quantization,
+            device_map="auto",
+            trust_remote_code=True,
+        )
+        if use_adapter:
+            from peft import PeftModel
+
+            self.model = PeftModel.from_pretrained(self.model, self.adapter_dir)
+        self.model.eval()
+        self.loaded_key = key
+
+    def answer(self, question: str, contexts: list[dict], use_adapter: bool) -> str:
+        self.load(use_adapter)
+        import torch
+
+        blocks = []
+        for index, context in enumerate(contexts[:3], start=1):
+            blocks.append(
+                "[{}] Baslik: {}\nCitation: {}\nMetin: {}".format(
+                    index,
+                    context.get("title") or "",
+                    context.get("citation") or context.get("id"),
+                    context.get("text") or "",
+                )
+            )
+        messages = [
+            {
+                "role": "system",
+                "content": "Sen bir Turk hukuku soru cevap asistanisin. Sadece verilen kaynaklari kullan. Cevap kisa, dogrudan ve Turkce olsun. Kaynak metnini tekrar yazma. Kaynakta yoksa bunu soyle.",
+            },
+            {"role": "user", "content": "Kaynaklar:\n\n" + "\n\n".join(blocks) + f"\n\nSoru: {question}\n\nCevap:"},
+        ]
+        prompt = self.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        encoded = self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(self.model.device)
+        with torch.no_grad():
+            output = self.model.generate(
+                **encoded,
+                max_new_tokens=160,
+                do_sample=False,
+                repetition_penalty=1.08,
+                pad_token_id=self.tokenizer.eos_token_id,
+            )
+        answer = self.tokenizer.decode(output[0][encoded["input_ids"].shape[1] :], skip_special_tokens=True).strip()
+        return self.clean_answer(answer)
+
+    @staticmethod
+    def clean_answer(answer: str) -> str:
+        for marker in ["\n\nSoru:", "\nSoru:", "\n\nKaynaklar:", "\nKaynaklar:"]:
+            if marker in answer:
+                answer = answer.split(marker, 1)[0].strip()
+        if "Cevap:" in answer:
+            answer = answer.split("Cevap:", 1)[-1].strip()
+        return answer
+
+
 def project_root() -> Path:
     candidates = [
         Path.cwd(),
@@ -33,6 +124,7 @@ class LegalRAGApp:
         self.dataset = self.root_dir / "Datasets_Ceng493_legal_rag"
         self.artifacts = self.root_dir / "artifacts"
         self.pipeline = None
+        self.llm_answerer = LLMAnswerer(self.root_dir)
         self.result_queue = queue.Queue()
 
         self.mode_var = tk.StringVar(value="fine_tuned")
@@ -118,7 +210,7 @@ class LegalRAGApp:
     def load_pipeline(self):
         try:
             self.pipeline = build_pipeline(self.dataset, self.artifacts, self.mode_var.get())
-            self.result_queue.put(("status", "Hazir"))
+            self.result_queue.put(("status", "Hazir - LLM cevap modu"))
         except Exception as exc:
             self.result_queue.put(("error", str(exc)))
 
@@ -143,7 +235,7 @@ class LegalRAGApp:
         if self.pipeline is None:
             messagebox.showinfo("Hazir degil", "Pipeline henuz yukleniyor.")
             return
-        self.status_var.set("Cevap hazirlaniyor...")
+        self.status_var.set("LLM cevap uretiyor...")
         self.answer.delete("1.0", tk.END)
         self.contexts.delete("1.0", tk.END)
         threading.Thread(target=self.answer_question, args=(text,), daemon=True).start()
@@ -151,6 +243,9 @@ class LegalRAGApp:
     def answer_question(self, question: str):
         try:
             result = self.pipeline.answer(question)
+            use_adapter = self.mode_var.get() in {"fine_tuned", "adapted_llm", "full"}
+            result["answer"] = self.llm_answerer.answer(question, result["contexts"], use_adapter)
+            result["generator"] = "Qwen/Qwen2.5-3B-Instruct" + (" + LoRA" if use_adapter else "")
             self.result_queue.put(("answer", result))
         except Exception as exc:
             self.result_queue.put(("error", str(exc)))
@@ -179,6 +274,9 @@ class LegalRAGApp:
         for index, context in enumerate(result["contexts"], start=1):
             lines.append(f"{index}. {context['id']}")
             lines.append(f"   {context['citation']}")
+        if result.get("generator"):
+            lines.append("")
+            lines.append(f"LLM: {result['generator']}")
         self.contexts.insert("1.0", "\n".join(lines))
         self.status_var.set("Hazir")
 
