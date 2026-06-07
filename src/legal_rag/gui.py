@@ -1,9 +1,12 @@
 import json
 import queue
+import os
+import subprocess
 import sys
 import threading
 import tkinter as tk
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from tkinter import messagebox, ttk
 
 from .pipeline import build_pipeline
@@ -14,90 +17,51 @@ class LLMAnswerer:
         self.root_dir = root_dir
         self.model_name = "Qwen/Qwen2.5-3B-Instruct"
         self.adapter_dir = root_dir / "artifacts" / "gpu" / "llm_lora"
-        self.loaded_key = None
-        self.tokenizer = None
-        self.model = None
 
-    def load(self, use_adapter: bool):
-        key = "fine_tuned" if use_adapter else "base"
-        if self.loaded_key == key and self.model is not None:
-            return
-        if self.model is not None:
-            import gc
-            import torch
-
-            del self.model
-            self.model = None
-            gc.collect()
-            if torch.cuda.is_available():
-                torch.cuda.empty_cache()
-        import torch
-        from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name, trust_remote_code=True)
-        if self.tokenizer.pad_token is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token
-        quantization = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_compute_dtype=torch.float16,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_use_double_quant=True,
-        )
-        self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_name,
-            quantization_config=quantization,
-            device_map="auto",
-            trust_remote_code=True,
-        )
-        if use_adapter:
-            from peft import PeftModel
-
-            self.model = PeftModel.from_pretrained(self.model, self.adapter_dir)
-        self.model.eval()
-        self.loaded_key = key
-
-    def answer(self, question: str, contexts: list[dict], use_adapter: bool) -> str:
-        self.load(use_adapter)
-        import torch
-
-        blocks = []
-        for index, context in enumerate(contexts[:3], start=1):
-            blocks.append(
-                "[{}] Baslik: {}\nCitation: {}\nMetin: {}".format(
-                    index,
-                    context.get("title") or "",
-                    context.get("citation") or context.get("id"),
-                    context.get("text") or "",
-                )
+    def answer(self, question: str, contexts: list[dict], draft_answer: str, use_adapter: bool) -> str:
+        with TemporaryDirectory() as temp_dir:
+            temp = Path(temp_dir)
+            input_path = temp / "input.json"
+            output_path = temp / "output.json"
+            input_path.write_text(
+                json.dumps({"question": question, "contexts": contexts, "draft_answer": draft_answer}, ensure_ascii=False),
+                encoding="utf-8",
             )
-        messages = [
-            {
-                "role": "system",
-                "content": "Sen bir Turk hukuku soru cevap asistanisin. Sadece verilen kaynaklari kullan. Cevap kisa, dogrudan ve Turkce olsun. Kaynak metnini tekrar yazma. Kaynakta yoksa bunu soyle.",
-            },
-            {"role": "user", "content": "Kaynaklar:\n\n" + "\n\n".join(blocks) + f"\n\nSoru: {question}\n\nCevap:"},
-        ]
-        prompt = self.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-        encoded = self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(self.model.device)
-        with torch.no_grad():
-            output = self.model.generate(
-                **encoded,
-                max_new_tokens=160,
-                do_sample=False,
-                repetition_penalty=1.08,
-                pad_token_id=self.tokenizer.eos_token_id,
+            command = [
+                sys.executable,
+                str(self.root_dir / "scripts" / "gui_llm_generate.py"),
+                "--input",
+                str(input_path),
+                "--output",
+                str(output_path),
+                "--model",
+                self.model_name,
+            ]
+            if use_adapter:
+                command.extend(["--adapter", str(self.adapter_dir)])
+            env = os.environ.copy()
+            env["PYTHONIOENCODING"] = "utf-8"
+            env["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
+            startupinfo = None
+            creationflags = 0
+            if sys.platform.startswith("win"):
+                startupinfo = subprocess.STARTUPINFO()
+                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                creationflags = subprocess.CREATE_NO_WINDOW
+            completed = subprocess.run(
+                command,
+                cwd=self.root_dir,
+                env=env,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=300,
+                startupinfo=startupinfo,
+                creationflags=creationflags,
             )
-        answer = self.tokenizer.decode(output[0][encoded["input_ids"].shape[1] :], skip_special_tokens=True).strip()
-        return self.clean_answer(answer)
-
-    @staticmethod
-    def clean_answer(answer: str) -> str:
-        for marker in ["\n\nSoru:", "\nSoru:", "\n\nKaynaklar:", "\nKaynaklar:"]:
-            if marker in answer:
-                answer = answer.split(marker, 1)[0].strip()
-        if "Cevap:" in answer:
-            answer = answer.split("Cevap:", 1)[-1].strip()
-        return answer
+            if completed.returncode != 0:
+                raise RuntimeError(completed.stderr.strip() or completed.stdout.strip() or "LLM generation failed.")
+            return json.loads(output_path.read_text(encoding="utf-8"))["answer"]
 
 
 def project_root() -> Path:
@@ -243,8 +207,9 @@ class LegalRAGApp:
     def answer_question(self, question: str):
         try:
             result = self.pipeline.answer(question)
+            draft_answer = result["answer"]
             use_adapter = self.mode_var.get() in {"fine_tuned", "adapted_llm", "full"}
-            result["answer"] = self.llm_answerer.answer(question, result["contexts"], use_adapter)
+            result["answer"] = self.llm_answerer.answer(question, result["contexts"], draft_answer, use_adapter)
             result["generator"] = "Qwen/Qwen2.5-3B-Instruct" + (" + LoRA" if use_adapter else "")
             self.result_queue.put(("answer", result))
         except Exception as exc:
