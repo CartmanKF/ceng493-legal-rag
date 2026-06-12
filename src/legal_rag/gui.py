@@ -7,9 +7,13 @@ import threading
 import tkinter as tk
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from tkinter import messagebox, ttk
+from tkinter import filedialog, messagebox, ttk
 
+from .evaluation import evaluate_rag
+from .io import read_json
 from .pipeline import build_pipeline
+
+EVALUATION_MODES = ["base", "adapted_retriever", "adapted_reranker", "adapted_llm", "fine_tuned"]
 
 
 class LLMAnswerer:
@@ -77,6 +81,17 @@ def project_root() -> Path:
     return Path.cwd()
 
 
+def run_benchmark(dataset: Path, artifacts: Path, custom_docs: Path | None, benchmark_path: Path) -> dict:
+    benchmark = read_json(benchmark_path)
+    if not isinstance(benchmark, list):
+        raise ValueError("Benchmark file must contain a JSON list.")
+    results = {}
+    for mode in EVALUATION_MODES:
+        pipeline = build_pipeline(dataset, artifacts, mode, custom_docs)
+        results[mode] = evaluate_rag(pipeline, benchmark)
+    return results
+
+
 class LegalRAGApp:
     def __init__(self, root: tk.Tk):
         self.root = root
@@ -88,6 +103,8 @@ class LegalRAGApp:
         self.dataset = self.root_dir / "Datasets_Ceng493_legal_rag"
         self.artifacts = self.root_dir / "artifacts"
         self.pipeline = None
+        self.custom_docs_path = None
+        self.custom_benchmark_path = None
         self.llm_answerer = LLMAnswerer(self.root_dir)
         self.result_queue = queue.Queue()
 
@@ -102,6 +119,8 @@ class LegalRAGApp:
         }
         self.label_by_mode = {value: key for key, value in self.mode_labels.items()}
         self.mode_label_var = tk.StringVar(value=self.label_by_mode[self.mode_var.get()])
+        self.docs_var = tk.StringVar(value="Varsayilan dokuman koleksiyonu")
+        self.benchmark_var = tk.StringVar(value="Benchmark secilmedi")
 
         self.build_ui()
         threading.Thread(target=self.load_pipeline, daemon=True).start()
@@ -151,6 +170,22 @@ class LegalRAGApp:
         for sample in sample_questions:
             ttk.Button(samples, text=sample, command=lambda text=sample: self.set_question(text)).pack(side=tk.LEFT, padx=(0, 8))
 
+        data_tools = ttk.Labelframe(container, text="Custom veri ve benchmark", padding=8)
+        data_tools.pack(fill=tk.X, pady=(2, 8))
+
+        data_row = ttk.Frame(data_tools)
+        data_row.pack(fill=tk.X)
+        ttk.Button(data_row, text="Dokuman dosyasi sec", command=self.select_custom_docs_file).pack(side=tk.LEFT)
+        ttk.Button(data_row, text="Dokuman klasoru sec", command=self.select_custom_docs_folder).pack(side=tk.LEFT, padx=(8, 0))
+        ttk.Button(data_row, text="Varsayilana don", command=self.clear_custom_docs).pack(side=tk.LEFT, padx=(8, 0))
+        ttk.Label(data_row, textvariable=self.docs_var).pack(side=tk.LEFT, padx=(12, 0))
+
+        benchmark_row = ttk.Frame(data_tools)
+        benchmark_row.pack(fill=tk.X, pady=(8, 0))
+        ttk.Button(benchmark_row, text="Benchmark sec", command=self.select_benchmark).pack(side=tk.LEFT)
+        ttk.Button(benchmark_row, text="Benchmark calistir", command=self.evaluate_benchmark).pack(side=tk.LEFT, padx=(8, 0))
+        ttk.Label(benchmark_row, textvariable=self.benchmark_var).pack(side=tk.LEFT, padx=(12, 0))
+
         panes = ttk.PanedWindow(container, orient=tk.VERTICAL)
         panes.pack(fill=tk.BOTH, expand=True, pady=(8, 0))
 
@@ -173,7 +208,7 @@ class LegalRAGApp:
 
     def load_pipeline(self):
         try:
-            self.pipeline = build_pipeline(self.dataset, self.artifacts, self.mode_var.get())
+            self.pipeline = build_pipeline(self.dataset, self.artifacts, self.mode_var.get(), self.custom_docs_path)
             self.result_queue.put(("status", "Hazir - LLM cevap modu"))
         except Exception as exc:
             self.result_queue.put(("error", str(exc)))
@@ -186,6 +221,60 @@ class LegalRAGApp:
     def change_mode(self):
         self.mode_var.set(self.mode_labels[self.mode_label_var.get()])
         self.reload_pipeline()
+
+    def select_custom_docs_file(self):
+        selected = filedialog.askopenfilename(
+            title="Custom dokuman sec",
+            filetypes=[
+                ("Supported files", "*.jsonl *.json *.txt"),
+                ("JSONL", "*.jsonl"),
+                ("JSON", "*.json"),
+                ("Text", "*.txt"),
+                ("All files", "*.*"),
+            ],
+        )
+        if selected:
+            self.custom_docs_path = Path(selected)
+            self.docs_var.set(str(self.custom_docs_path))
+            self.reload_pipeline()
+
+    def select_custom_docs_folder(self):
+        selected = filedialog.askdirectory(title="Custom dokuman klasoru sec")
+        if selected:
+            self.custom_docs_path = Path(selected)
+            self.docs_var.set(str(self.custom_docs_path))
+            self.reload_pipeline()
+
+    def clear_custom_docs(self):
+        self.custom_docs_path = None
+        self.docs_var.set("Varsayilan dokuman koleksiyonu")
+        self.reload_pipeline()
+
+    def select_benchmark(self):
+        selected = filedialog.askopenfilename(
+            title="Benchmark JSON sec",
+            filetypes=[("JSON", "*.json"), ("All files", "*.*")],
+        )
+        if selected:
+            self.custom_benchmark_path = Path(selected)
+            self.benchmark_var.set(str(self.custom_benchmark_path))
+
+    def evaluate_benchmark(self):
+        benchmark_path = self.custom_benchmark_path or (self.dataset / "gold_benchmark.json")
+        if not benchmark_path.exists():
+            messagebox.showinfo("Benchmark gerekli", "Benchmark JSON dosyasi sec.")
+            return
+        self.status_var.set("Benchmark calisiyor...")
+        self.answer.delete("1.0", tk.END)
+        self.contexts.delete("1.0", tk.END)
+        threading.Thread(target=self.evaluate_benchmark_worker, args=(benchmark_path,), daemon=True).start()
+
+    def evaluate_benchmark_worker(self, benchmark_path: Path):
+        try:
+            results = run_benchmark(self.dataset, self.artifacts, self.custom_docs_path, benchmark_path)
+            self.result_queue.put(("benchmark", results))
+        except Exception as exc:
+            self.result_queue.put(("error", str(exc)))
 
     def set_question(self, text: str):
         self.question.delete("1.0", tk.END)
@@ -223,6 +312,8 @@ class LegalRAGApp:
                     self.status_var.set(payload)
                 elif kind == "answer":
                     self.show_answer(payload)
+                elif kind == "benchmark":
+                    self.show_benchmark(payload)
                 elif kind == "error":
                     self.status_var.set("Hata")
                     messagebox.showerror("Hata", payload)
@@ -243,6 +334,30 @@ class LegalRAGApp:
             lines.append("")
             lines.append(f"LLM: {result['generator']}")
         self.contexts.insert("1.0", "\n".join(lines))
+        self.status_var.set("Hazir")
+
+    def show_benchmark(self, results: dict):
+        lines = ["Mode\tN\tR@1\tR@10\tMRR@10\tF1\tCitation\tFaithfulness"]
+        for mode, metrics in results.items():
+            lines.append(
+                "\t".join(
+                    [
+                        mode,
+                        str(metrics["n"]),
+                        f"{metrics['recall@1']:.3f}",
+                        f"{metrics['recall@10']:.3f}",
+                        f"{metrics['mrr@10']:.3f}",
+                        f"{metrics['answer_token_f1']:.3f}",
+                        f"{metrics['citation_hit_rate']:.3f}",
+                        f"{metrics['faithfulness_token_support']:.3f}",
+                    ]
+                )
+            )
+        self.answer.delete("1.0", tk.END)
+        self.answer.insert("1.0", "\n".join(lines))
+        self.contexts.delete("1.0", tk.END)
+        self.contexts.insert("1.0", "Benchmark sonucu arayuzde gosterildi. Ayrintili JSON icin komut satiri evaluate.py kullanilabilir.")
+        self.last_result = {"benchmark": results}
         self.status_var.set("Hazir")
 
     @staticmethod

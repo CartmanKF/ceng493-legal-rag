@@ -182,6 +182,19 @@ The desktop interface retrieves sources from the RAG pipeline and generates an a
 
 The first answer can take longer because the LLM is loaded into memory.
 
+The same interface can also be used with a custom document collection:
+
+- `Dokuman dosyasi sec`: select a `.jsonl`, `.json`, or `.txt` document file.
+- `Dokuman klasoru sec`: select a folder that contains `.txt` documents.
+- `Varsayilana don`: switch back to `Datasets_Ceng493_legal_rag`.
+
+Custom benchmark evaluation can be started from the interface:
+
+- `Benchmark sec`: select a benchmark JSON file.
+- `Benchmark calistir`: compare Base RAG, Fine-tuned RAG, and the ablation modes on the selected benchmark.
+
+The benchmark JSON format is the same format shown in the custom benchmark section above.
+
 ## GPU Training Commands
 
 ```powershell
