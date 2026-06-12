@@ -1,100 +1,193 @@
 # Turkish Legal RAG - CENG493
 
-This repository contains a Turkish legal RAG project using the provided `Datasets_Ceng493_legal_rag` dataset instead of the datasets listed in the original assignment PDF.
+Turkish legal question answering project with Base RAG, Fine-tuned RAG, ablation evaluation, custom document support, and custom benchmark support.
 
-The Kaggle `turkishlaw-dataset-for-llm-finetuning` and Hugging Face `Renicames/turkish-lawchatbot` datasets were not used.
+The default dataset directory is `Datasets_Ceng493_legal_rag`.
 
-## What Is Included
+## Project Contents
 
-- Base RAG and Fine-tuned RAG comparison with the same generator LLM family.
-- Custom document collection support.
-- Custom benchmark support.
-- Gold benchmark evaluation support.
-- Ablation study for adapted retriever, adapted reranker, and adapted answer behavior.
-- GPU fine-tuning scripts for embedding, reranker, and LLM LoRA/QLoRA.
-- GPU neural RAG evaluation script.
-- Final technical report PDF.
+- `src/legal_rag`: RAG pipeline, retrieval, reranking, answer generation, metrics, GUI.
+- `scripts/evaluate.py`: Base/Fine-tuned/Ablation benchmark evaluation.
+- `scripts/gpu_rag_evaluate.py`: GPU neural RAG evaluation with dense retrieval and LLM generation.
+- `scripts/gpu_train_*.py`: GPU fine-tuning scripts.
+- `artifacts`: lightweight adapter weights and GPU model artifacts.
+- `examples`: small custom document and benchmark examples.
+- `reports/final_report.pdf`: final report.
+- `RAG_Arayuz.bat`: local desktop interface launcher.
 
-## Dataset
+## Install
 
-Expected default dataset directory:
+Clone the repository:
+
+```powershell
+git clone https://github.com/CartmanKF/ceng493-legal-rag.git
+cd ceng493-legal-rag
+```
+
+Create and activate a Python environment:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\activate
+python -m pip install --upgrade pip
+```
+
+The custom benchmark evaluation script uses the lightweight RAG pipeline and can run on CPU with the Python standard library.
+
+Install the full package list only if the GPU training scripts or the desktop Qwen/LoRA generation path will be used:
+
+```powershell
+pip install -r requirements.txt
+```
+
+GPU is needed for the neural Qwen/LoRA scripts and the desktop LLM generation path.
+
+## Run the Default Benchmark
+
+This command evaluates Base RAG, Fine-tuned RAG, and ablation modes on the included gold benchmark:
+
+```powershell
+python scripts\evaluate.py --dataset Datasets_Ceng493_legal_rag --artifacts artifacts --benchmark gold --out reports\evaluation_results_gold_full_metrics.json
+```
+
+It evaluates these modes on the same benchmark:
+
+- `base`
+- `adapted_retriever`
+- `adapted_reranker`
+- `adapted_llm`
+- `fine_tuned`
+
+Main metrics:
+
+- Recall@1, Recall@3, Recall@5, Recall@10
+- MRR@10
+- nDCG@5, nDCG@10
+- Exact Match
+- Token F1
+- ROUGE-L
+- Citation hit rate
+- Top-1 citation accuracy
+- Faithfulness token support
+- Unsupported sentence rate
+
+## Test With Custom Documents and Custom Benchmark
+
+The evaluator can provide both a custom document collection and a custom benchmark file.
+
+```powershell
+python scripts\evaluate.py --dataset Datasets_Ceng493_legal_rag --artifacts artifacts --custom-docs path\to\docs.jsonl --benchmark-file path\to\benchmark.json --out reports\teacher_eval.json
+```
+
+The same command works with a directory of `.txt` files:
+
+```powershell
+python scripts\evaluate.py --dataset Datasets_Ceng493_legal_rag --artifacts artifacts --custom-docs path\to\doc_folder --benchmark-file path\to\benchmark.json --out reports\teacher_eval.json
+```
+
+### Custom Document Formats
+
+One `.txt` file:
 
 ```text
-Datasets_Ceng493_legal_rag/
-  corpus.jsonl
-  embedding.jsonl
-  reranker.jsonl
-  llm.jsonl
-  gold_benchmark.json
-  rag_eval.json
+Legal document text...
 ```
 
-Current dataset sizes:
+Folder of `.txt` files:
 
-- Corpus: 7,579 rows.
-- Embedding training: 2,059 rows.
-- Reranker training: 6,752 rows.
-- LLM training: 13,758 rows.
-- Gold benchmark: 240 verified QA rows.
-- RAG eval set: 1,000 rows.
+```text
+custom_docs/
+  doc1.txt
+  doc2.txt
+```
 
-## Quick Start
+JSONL:
 
-Launch the desktop interface:
+```json
+{"id": "doc1", "title": "Example Article", "text": "Document text.", "metadata": {"citation_label": "Example m.1"}}
+```
+
+JSON list:
+
+```json
+[
+  {
+    "id": "doc1",
+    "title": "Example Article",
+    "text": "Document text.",
+    "metadata": {
+      "citation_label": "Example m.1"
+    }
+  }
+]
+```
+
+### Custom Benchmark Format
+
+```json
+[
+  {
+    "question": "Question text",
+    "verified_answer": "Gold answer text",
+    "gold_sources": [
+      {
+        "source_id": "doc1",
+        "corpus_row_id": "doc1",
+        "citation_label": "Example m.1"
+      }
+    ]
+  }
+]
+```
+
+If relevant document ids are available, put them in `gold_sources`. Retrieval and citation metrics use those ids.
+
+## Included Custom Data Example
+
+Run:
 
 ```powershell
-.\RAG_Arayuz.bat
+python scripts\evaluate.py --dataset Datasets_Ceng493_legal_rag --artifacts artifacts --custom-docs examples\custom_docs.jsonl --benchmark-file examples\custom_benchmark.json --out reports\custom_docs_benchmark_smoke.json
 ```
 
-The desktop interface retrieves legal sources with the RAG pipeline and generates the final answer with `Qwen/Qwen2.5-3B-Instruct`. Fine-tuned modes load the LoRA adapter from `artifacts\gpu\llm_lora`. The first answer can take longer because the LLM is loaded onto the GPU.
+Expected smoke-test behavior:
 
-Train lightweight domain adapters:
+- Recall@1 = 1.0
+- Citation hit rate = 1.0
+- Top-1 citation accuracy = 1.0
 
-```powershell
-python scripts/train_lightweight.py --dataset Datasets_Ceng493_legal_rag --out artifacts
-```
-
-Run the full gold benchmark with all implemented metrics:
-
-```powershell
-.\.conda-envs\legal-rag-gpu\python.exe scripts\evaluate.py --dataset Datasets_Ceng493_legal_rag --artifacts artifacts --benchmark gold --out reports\evaluation_results_gold_full_metrics.json
-```
-
-Ask a question:
+## Ask One Question From the Command Line
 
 ```powershell
 python -m src.legal_rag.cli ask --dataset Datasets_Ceng493_legal_rag --artifacts artifacts --mode fine_tuned --question "Ceza Muhakemesi Kanunu m.225 nasil duzenlenmistir?"
 ```
 
-## Custom Documents and Benchmarks
+Available modes:
 
-Custom documents may be:
+- `base`
+- `adapted_retriever`
+- `adapted_reranker`
+- `adapted_llm`
+- `fine_tuned`
 
-- A directory of `.txt` files.
-- A single `.txt` file.
-- `.jsonl` rows with `id`, `text`, optional `title`, and optional `metadata.citation_label`.
-- A `.json` list of the same objects.
+## Desktop Interface
 
-Run evaluation on evaluator-provided documents and evaluator-provided benchmark:
+On the prepared local environment, run:
 
 ```powershell
-.\.conda-envs\legal-rag-gpu\python.exe scripts\evaluate.py --custom-docs path\to\docs.jsonl --benchmark-file path\to\benchmark.json --artifacts artifacts --out reports\teacher_eval.json
+.\RAG_Arayuz.bat
 ```
 
-Smoke-test examples:
+The desktop interface retrieves sources from the RAG pipeline and generates an answer with `Qwen/Qwen2.5-3B-Instruct`. Fine-tuned answer mode uses the LoRA adapter under `artifacts\gpu\llm_lora`.
 
-- `examples/custom_docs.jsonl`
-- `examples/custom_benchmark.json`
-- `reports/custom_docs_benchmark_smoke.json`
+The first answer can take longer because the LLM is loaded into memory.
 
-## GPU Training
-
-The GPU environment was validated with CUDA on NVIDIA GeForce RTX 4060 8GB.
+## GPU Training Commands
 
 ```powershell
-.\.conda-envs\legal-rag-gpu\python.exe scripts\gpu_train_embedding.py --dataset Datasets_Ceng493_legal_rag --max-steps 300 --out artifacts\gpu\embedding_model
-.\.conda-envs\legal-rag-gpu\python.exe scripts\gpu_train_reranker.py --dataset Datasets_Ceng493_legal_rag --max-steps 30 --batch-size 1 --grad-accum 4 --out artifacts\gpu\reranker_model
-.\.conda-envs\legal-rag-gpu\python.exe scripts\gpu_train_llm_lora.py --dataset Datasets_Ceng493_legal_rag --max-steps 60 --batch-size 1 --grad-accum 8 --max-length 384 --out artifacts\gpu\llm_lora
+python scripts\gpu_train_embedding.py --dataset Datasets_Ceng493_legal_rag --max-steps 300 --out artifacts\gpu\embedding_model
+python scripts\gpu_train_reranker.py --dataset Datasets_Ceng493_legal_rag --max-steps 30 --batch-size 1 --grad-accum 4 --out artifacts\gpu\reranker_model
+python scripts\gpu_train_llm_lora.py --dataset Datasets_Ceng493_legal_rag --max-steps 60 --batch-size 1 --grad-accum 8 --max-length 384 --out artifacts\gpu\llm_lora
 ```
 
 Training summaries:
@@ -103,44 +196,26 @@ Training summaries:
 - Reranker: 30 steps, average loss 0.3735.
 - LLM LoRA: 60 steps, average loss 0.9744.
 
-## GPU Neural RAG Evaluation
+## GPU Neural Evaluation
 
 ```powershell
-.\.conda-envs\legal-rag-gpu\python.exe scripts\gpu_rag_evaluate.py --dataset Datasets_Ceng493_legal_rag --benchmark gold --limit 20 --no-generation --out reports\gpu_rag_retrieval_gold_20.json
-.\.conda-envs\legal-rag-gpu\python.exe scripts\gpu_rag_evaluate.py --dataset Datasets_Ceng493_legal_rag --benchmark gold --limit 1 --out reports\gpu_rag_generation_gold_1.json
+python scripts\gpu_rag_evaluate.py --dataset Datasets_Ceng493_legal_rag --benchmark gold --limit 20 --no-generation --out reports\gpu_rag_retrieval_gold_20.json
+python scripts\gpu_rag_evaluate.py --dataset Datasets_Ceng493_legal_rag --benchmark gold --limit 1 --out reports\gpu_rag_generation_gold_1.json
 ```
 
-## Metrics
+## Tests
 
-The project reports:
+```powershell
+python -m unittest discover -s tests -p "test_*.py"
+```
 
-- Retrieval: Recall@1, Recall@3, Recall@5, Recall@10, MRR@10, nDCG@5, nDCG@10.
-- QA: Exact Match, token F1, ROUGE-L.
-- Grounding: citation hit rate, top-1 citation accuracy, grounded answer rate.
-- Hallucination proxies: faithfulness token support and unsupported sentence rate.
+## Main Results
 
-## Current Key Results
-
-Full 240-question lightweight gold benchmark:
+Full 240-question gold benchmark:
 
 | System | R@1 | R@10 | MRR@10 | nDCG@10 | F1 | ROUGE-L | Citation hit |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Base | 0.875 | 0.979 | 0.913 | 0.929 | 0.395 | 0.370 | 0.954 |
 | Fine-tuned | 0.879 | 0.979 | 0.914 | 0.930 | 0.398 | 0.373 | 0.946 |
 
-GPU neural smoke tests:
-
-- Retrieval-only, first 20 gold rows: Base Recall@1 `0.60`, Fine-tuned Recall@1 `0.85`.
-- Generation, first gold row: Base F1 `0.250`, Fine-tuned F1 `0.870`.
-
-## Reports and Deliverables
-
-- `reports/final_report.pdf`
-
-## Tests
-
-```powershell
-.\.conda-envs\legal-rag-gpu\python.exe -m unittest discover -s tests -p "test_*.py"
-```
-
-The latest run passed 3 tests.
+The detailed discussion is in `reports/final_report.pdf`.

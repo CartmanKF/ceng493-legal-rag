@@ -5,7 +5,7 @@ from typing import Iterable
 
 def read_jsonl(path: Path) -> list[dict]:
     rows = []
-    with path.open("r", encoding="utf-8") as handle:
+    with path.open("r", encoding="utf-8-sig") as handle:
         for line in handle:
             line = line.strip()
             if line:
@@ -20,7 +20,7 @@ def write_json(path: Path, data: object) -> None:
 
 
 def read_json(path: Path) -> object:
-    with path.open("r", encoding="utf-8") as handle:
+    with path.open("r", encoding="utf-8-sig") as handle:
         return json.load(handle)
 
 
@@ -36,7 +36,7 @@ def load_custom_documents(path: Path) -> list[dict]:
                 {
                     "id": file_path.stem,
                     "title": file_path.name,
-                    "text": file_path.read_text(encoding="utf-8"),
+                    "text": file_path.read_text(encoding="utf-8-sig"),
                     "metadata": {"source_file": str(file_path)},
                 }
             )
@@ -49,11 +49,10 @@ def load_custom_documents(path: Path) -> list[dict]:
             return data
         raise ValueError("Custom JSON document collection must be a list of objects.")
     if path.suffix.lower() == ".txt":
-        return [{"id": path.stem, "title": path.name, "text": path.read_text(encoding="utf-8"), "metadata": {}}]
+        return [{"id": path.stem, "title": path.name, "text": path.read_text(encoding="utf-8-sig"), "metadata": {}}]
     raise ValueError(f"Unsupported custom document format: {path}")
 
 
 def batched(items: list, size: int) -> Iterable[list]:
     for index in range(0, len(items), size):
         yield items[index : index + size]
-

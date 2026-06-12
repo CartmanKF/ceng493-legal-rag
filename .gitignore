@@ -12,3 +12,5 @@ reports/*.tmp
 build/
 dist/
 *.spec
+hf_space/
+gui_error.log
